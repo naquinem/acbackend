@@ -65,12 +65,12 @@ class AuthController extends Controller {
             'message' => 'Logged out successfully!'
         ])->withCookie($cookie);
     }
-    public function info(Request $request) {
+    public function user(Request $request) {
         return new UserResource($request->user());
     }
 
     // get the authenticated user method
-    public function user(Request $request) {
+    public function token(Request $request) {
         $token = $request->user()->createToken('token')->plainTextToken;
         $cookie = cookie('token', $token, 60 * 24);
         return response()->json([

@@ -21,6 +21,6 @@ Route::post('/schedule', [AuthController::class, 'schedule']);
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
+    Route::get('/token', [AuthController::class, 'token']);
     Route::get('/user', [AuthController::class, 'user']);
-    Route::get('/info', [AuthController::class, 'info']);
 });
