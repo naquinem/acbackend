@@ -16,11 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
-Route::post('/schedule', [AuthController::class, 'schedule']);
 
 
 Route::middleware('auth:sanctum')->group(function () {
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::get('/token', [AuthController::class, 'token']);
     Route::get('/user', [AuthController::class, 'user']);
+    Route::post('/schedule', [AuthController::class, 'schedule']);
 });

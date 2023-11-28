@@ -51,7 +51,7 @@ class AuthController extends Controller {
 
         return response()->json([
             'user' => new UserResource($user),
-            'token' => $token,
+            'token' => $cookie,
         ])->withCookie($cookie);
     }
 
@@ -89,6 +89,7 @@ class AuthController extends Controller {
         ]);
 
         $token = $user->createToken('schedule')->plainTextToken;
+        $cookie = cookie('token', $token, 60 * 24);
 
         return response()->json([
             'user' => new ScheduleResource($user),
